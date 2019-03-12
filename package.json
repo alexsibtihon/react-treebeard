@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prepublish": "npm run lib",
+    "postinstall": "yarn run lib",
     "lib": "npm run babel",
     "babel": "rimraf lib && babel src/ -d lib/",
     "test": "karma start karma.conf.js",
