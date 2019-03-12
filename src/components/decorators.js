@@ -6,7 +6,7 @@ import {VelocityComponent} from 'velocity-react';
 import styled from '@emotion/styled';
 
 const Div = styled('div', {
-    shouldForwardProp: prop => ['className', 'children'].indexOf(prop) !== -1
+    shouldForwardProp: prop => ['className', 'children', 'onClick'].indexOf(prop) !== -1
 })((({style}) => style));
 const Polygon = styled('polygon', {
     shouldForwardProp: prop => ['className', 'children', 'points'].indexOf(prop) !== -1
@@ -20,13 +20,13 @@ Loading.propTypes = {
     style: PropTypes.object
 };
 
-const Toggle = ({style}) => {
+const Toggle = ({style, onClick}) => {
     const {height, width} = style;
     const midHeight = height * 0.5;
     const points = `0,0 0,${height} ${width},${midHeight}`;
 
     return (
-        <Div style={style.base}>
+        <Div style={style.base} onClick={onClick}>
             <Div style={style.wrapper}>
                 <svg height={height} width={width}>
                     <Polygon points={points}
@@ -37,36 +37,40 @@ const Toggle = ({style}) => {
     );
 };
 Toggle.propTypes = {
-    style: PropTypes.object
+    style: PropTypes.object,
+    onClick: PropTypes.func.isRequired
 };
 
-const Header = ({node, style}) => {
+const Header = ({node, style, terminal, onClick}) => {
     return (
-        <Div style={style.base}>
+        <Div style={style.base} onClick={onClick}>
             <Div style={style.title}>
-                {node.name}
+                <span className={`text-extra-large fa fa-folder mr-2 ${terminal ? 'ml-2' : ''}`} />{node.name}
             </Div>
         </Div>
     );
 };
 Header.propTypes = {
     style: PropTypes.object,
-    node: PropTypes.object.isRequired
+    node: PropTypes.object.isRequired,
+    terminal: PropTypes.bool.isRequired,
+    onClick: PropTypes.func.isRequired
 };
 
 class Container extends React.Component {
     render() {
         const {style, decorators, terminal, onClick, node} = this.props;
-
         return (
-            <div onClick={onClick}
+            <Div
                  ref={ref => this.clickableRef = ref}
                  style={style.container}>
                 {!terminal ? this.renderToggle() : null}
 
                 <decorators.Header node={node}
-                                   style={style.header}/>
-            </div>
+                                   style={style.header}
+                                   terminal={terminal}
+                                   onClick={() => onClick(false)} />
+            </Div>
         );
     }
 
@@ -87,9 +91,9 @@ class Container extends React.Component {
     }
 
     renderToggleDecorator() {
-        const {style, decorators} = this.props;
+        const {style, decorators, onClick} = this.props;
 
-        return <decorators.Toggle style={style.toggle}/>;
+        return <decorators.Toggle style={style.toggle} onClick={() => onClick(true)} />;
     }
 }
 Container.propTypes = {

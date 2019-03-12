@@ -4,32 +4,29 @@ export default {
     tree: {
         base: {
             listStyle: 'none',
-            backgroundColor: '#21252B',
             margin: 0,
             padding: 0,
-            color: '#9DA5AB',
-            fontFamily: 'lucida grande ,tahoma,verdana,arial,sans-serif',
-            fontSize: '14px'
+            color: '#616161',
         },
         node: {
             base: {
-                position: 'relative'
+                position: 'relative',
+                cursor: 'pointer',
             },
             link: {
                 cursor: 'pointer',
                 position: 'relative',
-                padding: '0px 5px',
+                padding: '0px 3px',
                 display: 'block'
             },
             activeLink: {
-                background: '#31363F'
+                color: '#007cff',
             },
             toggle: {
                 base: {
                     position: 'relative',
                     display: 'inline-block',
                     verticalAlign: 'top',
-                    marginLeft: '-5px',
                     height: '24px',
                     width: '24px'
                 },
@@ -37,11 +34,11 @@ export default {
                     position: 'absolute',
                     top: '50%',
                     left: '50%',
-                    margin: '-7px 0 0 -7px',
+                    margin: '-14px 0 0 -5px',
                     height: '14px'
                 },
-                height: 14,
-                width: 14,
+                height: 10,
+                width: 10,
                 arrow: {
                     fill: '#9DA5AB',
                     strokeWidth: 0
@@ -51,7 +48,6 @@ export default {
                 base: {
                     display: 'inline-block',
                     verticalAlign: 'top',
-                    color: '#9DA5AB'
                 },
                 connector: {
                     width: '2px',
@@ -71,9 +67,7 @@ export default {
                 listStyle: 'none',
                 paddingLeft: '19px'
             },
-            loading: {
-                color: '#E2C089'
-            }
         }
     }
 };
+
