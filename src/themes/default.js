@@ -16,7 +16,6 @@ export default {
             link: {
                 cursor: 'pointer',
                 position: 'relative',
-                padding: '0px 8px',
                 display: 'block'
             },
             activeLink: {
