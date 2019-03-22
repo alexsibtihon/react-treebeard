@@ -12,6 +12,7 @@ export default {
             base: {
                 position: 'relative',
                 cursor: 'pointer',
+                padding: '2px 0',
             },
             link: {
                 cursor: 'pointer',
@@ -27,7 +28,8 @@ export default {
                     display: 'inline-block',
                     verticalAlign: 'top',
                     height: '24px',
-                    width: '24px'
+                    width: '24px',
+                    marginLeft: '-16px',
                 },
                 wrapper: {
                     position: 'absolute',
@@ -64,7 +66,7 @@ export default {
             },
             subtree: {
                 listStyle: 'none',
-                paddingLeft: '19px'
+                paddingLeft: '7px'
             },
         }
     }
