@@ -45,7 +45,7 @@ const Header = ({node, style, terminal, onClick}) => {
     return (
         <Div style={style.base} onClick={onClick}>
             <Div style={style.title}>
-                <span className={`text-extra-large fa fa-folder-o mr-2 ${terminal ? 'ml-2' : ''}`} />{node.name}
+                <span className={`text-extra-large fa fa-folder-o float-left mr-2 ${terminal ? 'ml-2' : ''}`} /><span style={{wordBreak: 'break-all'}}>{node.name}</span>
             </Div>
         </Div>
     );
