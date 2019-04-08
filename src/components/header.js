@@ -26,10 +26,10 @@ class NodeHeader extends React.Component {
     }
 
     render() {
-        const {animations, decorators, node, onClick, style} = this.props;
+        const {animations, decorators, node, onClick, style, disableActive} = this.props;
         const {active, children} = node;
         const terminal = !children;
-        const container = [style.link, active ? style.activeLink : null];
+        const container = [style.link, (active && !disableActive) ? style.activeLink : null];
         const headerStyles = Object.assign({container}, style);
 
         return (
@@ -51,7 +51,12 @@ NodeHeader.propTypes = {
         PropTypes.bool
     ]).isRequired,
     node: PropTypes.object.isRequired,
+    disableActive: PropTypes.bool,
     onClick: PropTypes.func
+};
+
+NodeHeader.defaultProps = {
+    disableActive: false
 };
 
 export default NodeHeader;
